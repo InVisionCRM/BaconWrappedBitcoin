@@ -9,5 +9,5 @@ export function Navigation() {
     { name: "FAQ", link: "#faq" },
   ]
 
-  return <FloatingNav navItems={navItems} className="backdrop-blur-xl bg-white/10 border-[#d4af37]/60 !bg-white/10 !border-[#d4af37]/60" />
+  return <FloatingNav navItems={navItems} className="backdrop-blur-xl bg-white/10 border-white/25" />
 }

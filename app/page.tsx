@@ -10,6 +10,8 @@ import { PixelShowcase } from "@/components/pixel-showcase"
 import { SwapSection } from "@/components/swap-section"
 import { Tokenomics } from "@/components/tokenomics"
 import { HowToBuy } from "@/components/how-to-buy"
+import { PixelImage } from "@/components/ui/pixel-image"
+import { PigFusionSection } from "@/components/pig-fusion"
 import Image from "next/image"
 
 export default function Home() {
@@ -17,28 +19,38 @@ export default function Home() {
     <main className="min-h-dvh">
       <Navigation />
       <Hero />
+      <Tokenomics />
       <HowItWorks />
       <SwapSection />
       <HowToBuy />
-      <Tokenomics />
-      
-      <section id="btc-video" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-center">
-          <div className="w-[180px] sm:w-[220px] md:w-[280px] overflow-hidden rounded-xl ring-1 ring-white/10 shadow-2xl">
-            <video
-              src="/btcfusiontubeloop.mp4"
-              className="h-auto w-full"
-              autoPlay
-              muted
-              loop
-              playsInline
+      <section id="our-team" className="bg-black text-white py-20 px-0">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold">Our Team</h2>
+            <p className="text-white mt-2 max-w-2xl mx-auto">
+              Meet our dedicated team of scientists and engineers pushing the limits of crispy innovation—smart,
+              relentless, and obsessed with perfecting the Bacon Wrapped Bitcoin experience.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <PixelImage
+              src="/scienctists.png"
+              grid="6x4"
+              className="w-full max-w-5xl h-[min(60vh,520px)]"
+              pixelFadeInDuration={3000}
+              maxAnimationDelay={1500}
+              colorRevealDelay={1200}
+              objectFit="cover"
+              rounded={false}
             />
           </div>
         </div>
       </section>
+      <PigFusionSection />
       <BeforeAfter />
       <PixelShowcase />
       <FAQ />
+      
       <Footer />
     </main>
   )

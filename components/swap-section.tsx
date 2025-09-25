@@ -4,7 +4,7 @@ import { PixelImage } from "@/components/ui/pixel-image"
 
 export function SwapSection() {
   return (
-    <section id="swap" className="relative scroll-mt-24 bg-black text-white">
+    <section id="swap" className="relative scroll-mt-24 bg-black text-white px-0">
       <div className="relative w-full h-[100vh] md:h-[100vh]">
           {/* Pixelated background image */}
           <PixelImage

@@ -241,13 +241,13 @@ export const Card = ({
       {/* Non-clickable card (disabled modal). */}
       <motion.div
         layoutId={layout ? `card-${card.title}` : undefined}
-        className="relative z-10 flex h-80 w-56 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[40rem] md:w-96 dark:bg-neutral-900"
+        className="relative z-10 flex h-[25rem] w-[17.5rem] flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[40rem] md:w-96 dark:bg-neutral-900"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         {card.overlayClassName ? (
           <div className={cn("pointer-events-none absolute inset-0 z-20", card.overlayClassName)} />
         ) : null}
-        <div className="relative z-40 p-8">
+        <div className="relative z-40 px-4 py-6 md:p-8">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
             className="text-left abeezee-regular text-sm font-medium text-white md:text-base"
@@ -262,7 +262,7 @@ export const Card = ({
           </motion.p>
         </div>
         {/* Inline content preview (so text shows without opening). */}
-        <div className="relative z-40 px-8 pb-8 pt-2 text-white/90 abeezee-regular">
+        <div className="relative z-40 px-4 md:px-8 pb-8 pt-2 text-white/90 abeezee-regular">
           {card.content}
         </div>
         <BlurImage

@@ -38,7 +38,7 @@ export const FloatingNav = ({
         className={cn(
           "fixed left-1/2 -translate-x-1/2 transform top-4 sm:top-6 z-[5000] hidden sm:flex items-center justify-center",
           "w-auto",
-          "rounded-full backdrop-blur-xl bg-white/10 border border-[#d4af37]/60 shadow-[0_8px_30px_rgba(0,0,0,0.12)] text-white font-bacon",
+          "rounded-full backdrop-blur-xl bg-white/10 border border-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] text-white font-bacon",
           "pl-6 pr-2 py-2 space-x-4",
           className
         )}
@@ -53,6 +53,13 @@ export const FloatingNav = ({
             <span className="hidden sm:block text-sm">{navItem.name}</span>
           </a>
         ))}
+        <a
+          href="#how-to-buy"
+          aria-label="Buy BWBTC now"
+          className="ml-2 rounded-full bg-white/20 hover:bg-white/30 text-white px-4 py-2 text-sm"
+        >
+          Buy
+        </a>
       </motion.div>
 
       {/* Mobile hamburger */}
@@ -62,7 +69,7 @@ export const FloatingNav = ({
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
         onClick={() => setIsOpen((v) => !v)}
-        className="sm:hidden fixed top-4 left-4 z-[5001] h-10 w-10 rounded-full border border-[#d4af37]/60 bg-white/10 backdrop-blur-xl text-white flex flex-col items-center justify-center space-y-1"
+        className="sm:hidden fixed top-4 left-4 z-[5001] h-10 w-10 rounded-full border border-white/5 bg-white/10 backdrop-blur-xl text-white flex flex-col items-center justify-center space-y-1"
       >
         <span className="sr-only">Toggle menu</span>
         <span className={cn("block h-0.5 w-5 bg-white transition-all", isOpen && "translate-y-1.5 rotate-45")}></span>
@@ -80,7 +87,7 @@ export const FloatingNav = ({
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="mt-16 mx-3 rounded-2xl border border-[#d4af37]/60 bg-white/10 backdrop-blur-xl text-white"
+            className="mt-16 mx-3 rounded-2xl border border-white/5 bg-white/10 backdrop-blur-xl text-white"
             onClick={(e) => e.stopPropagation()}
           >
             <ul className="py-2">
