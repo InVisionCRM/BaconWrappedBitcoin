@@ -17,8 +17,9 @@ export function Hero() {
       {/* Full-bleed looping video background */}
       <LiteVideo
         className="absolute inset-0 -z-30 h-full w-full object-cover"
-        srcMobile="/bitcoinmobile.webm"
+        srcMobile="/bitcoinmobile.mp4"
         srcDesktop="/bitcoin.webm"
+        immediate={true}
         aria-hidden="true"
       />
       {/* Readability overlay */}

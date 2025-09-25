@@ -12,6 +12,7 @@ import { Tokenomics } from "@/components/tokenomics"
 import { HowToBuy } from "@/components/how-to-buy"
 import { PixelImage } from "@/components/ui/pixel-image"
 import { PigFusionSection } from "@/components/pig-fusion"
+import { LiteVideo } from "@/components/ui/lite-video"
 import Image from "next/image"
 
 export default function Home() {
@@ -47,6 +48,19 @@ export default function Home() {
         </div>
       </section>
       <PigFusionSection />
+      
+      {/* Pig Loop Section */}
+      <section id="pig-loop" className="bg-black py-20 px-0">
+        <div className="max-w-7xl mx-auto flex justify-center">
+          <LiteVideo
+            className="w-full max-w-2xl h-auto rounded-lg"
+            srcDesktop="/pigloop.mp4"
+            srcMobile="/pigloop.mp4"
+            aria-label="Pig Loop Animation"
+          />
+        </div>
+      </section>
+      
       <BeforeAfter />
       <PixelShowcase />
       <FAQ />
