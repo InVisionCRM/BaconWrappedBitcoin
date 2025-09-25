@@ -41,7 +41,7 @@ const socialLinks = [
 
 export function Community() {
   return (
-    <section id="community" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="community" className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-white scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">

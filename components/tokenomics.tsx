@@ -12,7 +12,7 @@ const baconDistribution = [
 
 export function Tokenomics() {
   return (
-    <section id="tokenomics" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="tokenomics" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
