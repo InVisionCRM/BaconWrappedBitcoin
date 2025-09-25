@@ -8,6 +8,8 @@ import { HowItWorks } from "@/components/how-it-works"
 import { BeforeAfter } from "@/components/before-after"
 import { PixelShowcase } from "@/components/pixel-showcase"
 import { SwapSection } from "@/components/swap-section"
+import { Tokenomics } from "@/components/tokenomics"
+import { HowToBuy } from "@/components/how-to-buy"
 import Image from "next/image"
 
 export default function Home() {
@@ -15,8 +17,10 @@ export default function Home() {
     <main className="min-h-dvh">
       <Navigation />
       <Hero />
-      <SwapSection />
       <HowItWorks />
+      <SwapSection />
+      <HowToBuy />
+      <Tokenomics />
       
       <section id="btc-video" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-center">

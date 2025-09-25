@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, JetBrains_Mono, Bangers, Ubuntu } from "next/font/google"
+import { Inter, JetBrains_Mono, Bangers, Ubuntu, ABeeZee } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
@@ -28,6 +28,14 @@ const ubuntu = Ubuntu({
   subsets: ["latin"],
   variable: "--font-ubuntu",
   weight: ["300", "400", "500", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+})
+
+const abeezee = ABeeZee({
+  subsets: ["latin"],
+  variable: "--font-abeezee",
+  weight: "400",
   style: ["normal", "italic"],
   display: "swap",
 })
@@ -61,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${baconFont.variable} ${ubuntu.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${baconFont.variable} ${ubuntu.variable} ${abeezee.variable}`}>
       <body className="font-sans antialiased min-h-dvh overflow-x-hidden">
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />

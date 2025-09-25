@@ -1,67 +1,50 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-
-const baconDistribution = [
-  { label: "Crispy Strips", percentage: 40, color: "bg-primary", description: "The crunchiest part of our portfolio" },
-  { label: "Chewy Bits", percentage: 30, color: "bg-accent", description: "For those who like texture variety" },
-  { label: "Bacon Grease", percentage: 20, color: "bg-secondary", description: "Essential for flavor enhancement" },
-  { label: "Bitcoin Seasoning", percentage: 10, color: "bg-muted", description: "Just a pinch of digital magic" },
-]
+import { motion, useScroll, useTransform } from "motion/react"
+import Image from "next/image"
+import React from "react"
 
 export function Tokenomics() {
+  const ref = React.useRef<HTMLDivElement | null>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
+
+  // Slide in from right then out to left (and mirrored for left pig)
+  const xRight = useTransform(scrollYProgress, [0, 0.5, 1], ["30vw", "0vw", "-30vw"])
+  const xLeft = useTransform(scrollYProgress, [0, 0.5, 1], ["-30vw", "0vw", "30vw"])
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0])
+
   return (
-    <section id="tokenomics" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 scroll-mt-24">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-            <span className="text-primary">Bacon Distribution</span> Science
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            After extensive research in our kitchen laboratory, we've determined the perfect bacon-to-bitcoin ratio!
-          </p>
+    <section id="tokenomics" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-black text-white scroll-mt-24">
+      <div ref={ref} className="relative mx-auto max-w-7xl">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          {/* Right pig background */}
+          <motion.div style={{ x: xRight, opacity }} className="absolute right-0 top-1/2 -translate-y-1/2 w-[65vw] max-w-[720px]">
+            <Image src="/pigright.png" alt="Pig right" width={720} height={360} className="w-full h-auto object-contain" priority />
+          </motion.div>
+          {/* Left pig foreground */}
+          <motion.div style={{ x: xLeft, opacity }} className="absolute left-0 top-1/2 -translate-y-1/2 w-[65vw] max-w-[720px]">
+            <Image src="/pigleft.png" alt="Pig left" width={720} height={360} className="w-full h-auto object-contain" priority />
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            {baconDistribution.map((item, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow">
-                <CardHeader className="pb-3">
-                  <div className="flex justify-between items-center">
-                    <CardTitle className="text-lg">{item.label}</CardTitle>
-                    <span className="text-2xl font-bold text-primary">{item.percentage}%</span>
-                  </div>
-                  <CardDescription>{item.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Progress value={item.percentage} className="h-3" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center lg:text-left">
-            <Card className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
-              <CardHeader className="text-center">
-                <div className="text-6xl mb-4 float-animation">🥓₿</div>
-                <CardTitle className="text-2xl mb-4">Total Bacon Supply</CardTitle>
-                <div className="text-4xl font-bold text-primary mb-2">∞</div>
-                <CardDescription className="text-lg">Strips (Unlimited Breakfast)</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center space-y-4">
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <div className="font-semibold text-primary">100% Delicious</div>
-                    <div className="text-muted-foreground">Scientifically proven</div>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-primary">0% Vegetables</div>
-                    <div className="text-muted-foreground">As nature intended</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+        <div className="relative text-center space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold">Tokenomics</h2>
+          <p className="mx-auto max-w-2xl text-white/80">
+            A delightfully simple breakdown. Supply and allocations will be announced with the contract.
+          </p>
+          <div className="mx-auto grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3 text-left">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <div className="text-sm text-white/60">Total Supply</div>
+              <div className="text-xl font-semibold">TBA</div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <div className="text-sm text-white/60">Liquidity</div>
+              <div className="text-xl font-semibold">TBA</div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <div className="text-sm text-white/60">Community</div>
+              <div className="text-xl font-semibold">TBA</div>
+            </div>
           </div>
         </div>
       </div>

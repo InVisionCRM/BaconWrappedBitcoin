@@ -36,8 +36,8 @@ export const FloatingNav = ({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
         className={cn(
-          "fixed inset-x-0 top-4 sm:top-6 z-[5000] mx-auto hidden sm:flex items-center justify-center",
-          "w-[calc(100vw-1rem)] sm:w-auto max-w-full",
+          "fixed left-1/2 -translate-x-1/2 transform top-4 sm:top-6 z-[5000] hidden sm:flex items-center justify-center",
+          "w-auto",
           "rounded-full backdrop-blur-xl bg-white/10 border border-[#d4af37]/60 shadow-[0_8px_30px_rgba(0,0,0,0.12)] text-white font-bacon",
           "pl-6 pr-2 py-2 space-x-4",
           className

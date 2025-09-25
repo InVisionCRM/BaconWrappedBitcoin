@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import { TypewriterEffect } from "@/components/ui/typewriter-effect"
+import { LiteVideo } from "@/components/ui/lite-video"
 // Video background implementation
 
 export function Hero() {
@@ -14,19 +15,12 @@ export function Hero() {
       className="relative overflow-hidden pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[calc(100dvh-64px)] flex items-center"
     >
       {/* Full-bleed looping video background */}
-      <video
+      <LiteVideo
         className="absolute inset-0 -z-30 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+        srcMobile="/bitcoinmobile.webm"
+        srcDesktop="/bitcoin.webm"
         aria-hidden="true"
-      >
-        <source src="/bitcoinmobile.webm" type="video/webm" media="(max-width: 640px)" />
-        <source src="/bitcoin.webm" type="video/webm" media="(min-width: 641px)" />
-        <source src="/bitcoin.mp4" type="video/mp4" />
-      </video>
+      />
       {/* Readability overlay */}
       <div className="absolute inset-0 -z-20 bg-black/40" />
 
