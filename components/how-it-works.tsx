@@ -37,6 +37,9 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 scroll-mt-24 bg-black text-white dark">
       <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold">How It Works</h2>
+        </div>
         <AnimatedTestimonials testimonials={testimonials} autoplay={false} />
       </div>
     </section>
