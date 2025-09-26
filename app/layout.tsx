@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, JetBrains_Mono, Bangers, Ubuntu, ABeeZee } from "next/font/google"
+import { Inter, JetBrains_Mono, Bangers, Ubuntu, ABeeZee, Zilla_Slab_Highlight } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
@@ -40,6 +40,13 @@ const abeezee = ABeeZee({
   display: "swap",
 })
 
+const zillaSlabHighlight = Zilla_Slab_Highlight({
+  subsets: ["latin"],
+  variable: "--font-zilla-slab-highlight",
+  weight: ["400", "700"],
+  display: "swap",
+})
+
 export const metadata: Metadata = {
   title: "Bacon Wrapped Bitcoin (BWBTC) - The Tastiest Memecoin on PulseChain",
   description:
@@ -69,7 +76,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${baconFont.variable} ${ubuntu.variable} ${abeezee.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${baconFont.variable} ${ubuntu.variable} ${abeezee.variable} ${zillaSlabHighlight.variable}`}>
       <body className="font-sans antialiased min-h-dvh overflow-x-hidden">
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />

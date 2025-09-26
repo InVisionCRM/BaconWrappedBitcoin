@@ -138,6 +138,10 @@
 .abeezee-regular { font-family: var(--font-abeezee), var(--font-sans); font-weight: 400; font-style: normal; }
 .abeezee-regular-italic { font-family: var(--font-abeezee), var(--font-sans); font-weight: 400; font-style: italic; }
 
+/* Zilla Slab Highlight utilities */
+.zilla-slab-highlight-regular { font-family: var(--font-zilla-slab-highlight), var(--font-sans); font-weight: 400; font-style: normal; }
+.zilla-slab-highlight-bold { font-family: var(--font-zilla-slab-highlight), var(--font-sans); font-weight: 700; font-style: normal; }
+
 /* Treat white pixels as transparent for the logo without editing the source file */
 .logo-remove-white {
   filter: drop-shadow(0 0 0 rgba(0,0,0,0));

@@ -12,7 +12,10 @@ import { Tokenomics } from "@/components/tokenomics"
 import { HowToBuy } from "@/components/how-to-buy"
 import { PixelImage } from "@/components/ui/pixel-image"
 import { PigFusionSection } from "@/components/pig-fusion"
+import { RisingLogo } from "@/components/rising-logo"
+import { AboutPigs } from "@/components/about-pigs"
 import { LiteVideo } from "@/components/ui/lite-video"
+import { GridPattern } from "@/components/ui/grid-pattern"
 import Image from "next/image"
 
 export default function Home() {
@@ -20,12 +23,22 @@ export default function Home() {
     <main className="min-h-dvh">
       <Navigation />
       <Hero />
-      <Tokenomics />
-      <HowItWorks />
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <Tokenomics />
+      </section>
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <HowItWorks />
+      </section>
       <SwapSection />
-      <HowToBuy />
-      <section id="our-team" className="bg-black text-white py-20 px-0">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <HowToBuy />
+      </section>
+      <section id="our-team" className="relative bg-black text-white py-20 px-0">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold">Our Team</h2>
             <p className="text-white mt-2 max-w-2xl mx-auto">
@@ -47,23 +60,53 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <PigFusionSection />
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <PigFusionSection />
+      </section>
+      
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <RisingLogo />
+      </section>
+      
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <AboutPigs />
+      </section>
       
       {/* Pig Loop Section */}
-      <section id="pig-loop" className="bg-black py-20 px-0">
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <LiteVideo
-            className="w-full max-w-2xl h-auto rounded-lg"
-            srcDesktop="/pigloop.mp4"
-            srcMobile="/pigloop.mp4"
-            aria-label="Pig Loop Animation"
-          />
+      <section id="pig-loop" className="relative bg-black py-20 px-0">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-white ubuntu-bold">
+              
+            </h2>
+          </div>
+          <div className="flex justify-center">
+            <LiteVideo
+              className="w-full max-w-2xl h-auto rounded-lg"
+              srcDesktop="/pigloop.mp4"
+              srcMobile="/pigloop.mp4"
+              aria-label="Pig Loop Animation"
+            />
+          </div>
         </div>
       </section>
       
-      <BeforeAfter />
-      <PixelShowcase />
-      <FAQ />
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <BeforeAfter />
+      </section>
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <PixelShowcase />
+      </section>
+      <section className="relative">
+        <GridPattern className="opacity-40 fill-white/10 stroke-white/20" />
+        <FAQ />
+      </section>
       
       <Footer />
     </main>

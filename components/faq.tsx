@@ -58,23 +58,23 @@ export function FAQ() {
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <Card key={index} className="overflow-hidden">
+            <Card key={index} className="overflow-hidden bg-white/5 border-white/5 backdrop-blur-sm">
               <CardHeader
-                className="cursor-pointer hover:bg-muted/50 transition-colors"
+                className="cursor-pointer"
                 onClick={() => toggleFAQ(index)}
               >
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-left text-lg">{faq.question}</CardTitle>
+                  <CardTitle className="text-left text-lg text-white">{faq.question}</CardTitle>
                   {openIndex === index ? (
-                    <ChevronUp className="h-5 w-5 text-muted-foreground" />
+                    <ChevronUp className="h-5 w-5 text-white/70" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                    <ChevronDown className="h-5 w-5 text-white/70" />
                   )}
                 </div>
               </CardHeader>
               {openIndex === index && (
-                <CardContent className="pt-0">
-                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                <CardContent className="pt-0 bg-white/5">
+                  <p className="text-white/80 leading-relaxed">{faq.answer}</p>
                 </CardContent>
               )}
             </Card>

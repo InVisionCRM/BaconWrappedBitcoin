@@ -12,20 +12,20 @@ export function Hero() {
     <section
       id="hero"
       aria-label="Bacon Wrapped Bitcoin hero"
-      className="relative overflow-hidden pt-24 pb-12 px-0 min-h-[calc(100dvh-64px)] flex items-center"
+      className="relative overflow-hidden px-0"
     >
-      {/* Full-bleed looping video background */}
-      <LiteVideo
-        className="absolute inset-0 -z-30 h-full w-full object-cover"
-        srcMobile="/bitcoinmobile.mp4"
-        srcDesktop="/bitcoin.webm"
-        immediate={true}
-        aria-hidden="true"
-      />
-      {/* Readability overlay */}
-      <div className="absolute inset-0 -z-20 bg-black/40" />
-
-      <div className="max-w-7xl mx-auto w-full" />
+      {/* Video container that determines section size */}
+      <div className="relative w-full">
+        <LiteVideo
+          className="w-full h-auto object-contain object-center"
+          srcMobile="/bitcoin.mp4"
+          srcDesktop="/bitcoin.mp4"
+          immediate={true}
+          aria-hidden="true"
+        />
+        {/* Readability overlay */}
+        <div className="absolute inset-0 -z-20 bg-black/40" />
+      </div>
     </section>
   )
 }
