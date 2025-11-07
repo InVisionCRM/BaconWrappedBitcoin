@@ -89,39 +89,60 @@ export function Hero() {
           }}
         />
 
-         {/* Word sequence - one at a time, centered */}
-         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-           <h1
-             className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out"
-             style={{ opacity: word1Opacity }}
-           >
-             The
-           </h1>
-           <h1
-             className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out"
-             style={{ opacity: word2Opacity }}
-           >
-             Future
-           </h1>
-           <h1
-             className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out"
-             style={{ opacity: word3Opacity }}
-           >
-             of
-           </h1>
-           <h1
-             className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out"
-             style={{ opacity: word4Opacity }}
-           >
-             Finance
-           </h1>
-           <h1
-             className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out px-8"
-             style={{ opacity: word5Opacity }}
-           >
-             is finally here!
-           </h1>
-         </div>
+        {/* Word sequence - one at a time, centered */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <h1
+            className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out"
+            style={{ opacity: word1Opacity }}
+          >
+            The
+          </h1>
+          <h1
+            className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out"
+            style={{ opacity: word2Opacity }}
+          >
+            Future
+          </h1>
+          <h1
+            className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out"
+            style={{ opacity: word3Opacity }}
+          >
+            of
+          </h1>
+          <h1
+            className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out"
+            style={{ opacity: word4Opacity }}
+          >
+            Finance
+          </h1>
+          <h1
+            className="absolute text-white text-6xl md:text-8xl lg:text-9xl font-poppins font-bold tracking-wider text-center transition-opacity duration-300 ease-out px-8"
+            style={{ opacity: word5Opacity }}
+          >
+            is finally here!
+          </h1>
+        </div>
+
+        {/* Scroll indicator */}
+        <a
+          href="#how-it-works"
+          className="absolute bottom-10 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center text-white/80 hover:text-white transition-colors pointer-events-auto"
+          aria-label="Scroll to learn how it works"
+        >
+          <span className="text-xs tracking-[0.35em] uppercase mb-2">Scroll</span>
+          <svg
+            className="w-7 h-7 animate-bounce"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 9l7 7 7-7" />
+          </svg>
+        </a>
       </div>
     </section>
   )

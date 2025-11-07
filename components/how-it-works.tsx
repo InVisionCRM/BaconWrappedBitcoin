@@ -9,10 +9,12 @@ export function HowItWorks() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play()
-      setIsPlaying(true)
-    }
+    if (!videoRef.current) return
+
+    videoRef.current.muted = false
+    videoRef.current.volume = 1
+    videoRef.current.play()
+    setIsPlaying(true)
   }
   const testimonials = [
     {
@@ -66,7 +68,7 @@ export function HowItWorks() {
                 src="/howitworks.mp4"
                 aria-label="How Bacon Wrapped Bitcoin Works"
                 autoPlay={false}
-                muted
+                controls
                 loop
                 playsInline
                 preload="metadata"
@@ -91,5 +93,4 @@ export function HowItWorks() {
     </section>
   )
 }
-
 

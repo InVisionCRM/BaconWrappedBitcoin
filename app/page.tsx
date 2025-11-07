@@ -9,13 +9,9 @@ import { PixelImage } from "@/components/ui/pixel-image"
 import { PigFusionSection } from "@/components/pig-fusion"
 import { RisingLogo } from "@/components/rising-logo"
 import { AboutPigs } from "@/components/about-pigs"
-import { LiteVideo } from "@/components/ui/lite-video"
 import { Stats } from "@/components/stats"
-import { BaconAccordionSection } from "@/components/bacon-accordion-section"
 import { NFTArt } from "@/components/nft-art"
 import { LinePatternBackground } from "@/components/ui/line-pattern-background"
-import { StarfieldBackground } from "@/components/ui/starfield-background"
-import Image from "next/image"
 
 export default function Home() {
   return (
@@ -33,7 +29,6 @@ export default function Home() {
       </section>
       <Stats />
       <NFTArt />
-      <BaconAccordionSection />
       <SwapSection />
       <section id="our-team" className="relative bg-black text-white py-20 px-0 overflow-hidden">
         <LinePatternBackground />
@@ -75,5 +70,3 @@ export default function Home() {
     </main>
   )
 }
-
-

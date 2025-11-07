@@ -3,9 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono, Bangers, Ubuntu, ABeeZee, Zilla_Slab_Highlight, Swanky_and_Moo_Moo, Chango, Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
-import { SmoothCursor } from "@/components/ui/smooth-cursor"
 import { CoolMode } from "@/components/ui/cool-mode"
-import Image from "next/image"
 import "./globals.css"
 
 const inter = Inter({
@@ -118,19 +116,6 @@ export default function RootLayout({
         >
           <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         </CoolMode>
-        <SmoothCursor
-          cursor={
-            <Image
-              src="/bacon-wrapped-bitcoin.jpg"
-              alt="Bacon Wrapped Bitcoin cursor"
-              width={48}
-              height={48}
-              className="rounded-full object-cover"
-              priority
-              quality={85}
-            />
-          }
-        />
         <Analytics />
       </body>
     </html>
