@@ -1,7 +1,7 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "motion/react"
+import { useRef, useState } from "react"
+import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react"
 import Image from "next/image"
 import PromptOverlay from "./prompt-overlay"
 
@@ -2235,6 +2235,7 @@ function ParallaxEffect48() {
   })
 
   const items = Array.from({ length: 6 })
+  const radius = 250
 
   return (
     <div ref={containerRef} className="relative h-[200vh]">
@@ -2244,16 +2245,20 @@ function ParallaxEffect48() {
           <h2 className="text-5xl font-bold text-white">Chain Link</h2>
         </div>
 
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ zIndex: 1 }}
+          viewBox="-400 -400 800 800"
+          preserveAspectRatio="xMidYMid meet"
+        >
           {items.map((_, index) => {
             if (index === items.length - 1) return null
             const angle1 = (index / items.length) * Math.PI * 2
             const angle2 = ((index + 1) / items.length) * Math.PI * 2
-            const radius = 250
-            const x1 = Math.cos(angle1) * radius + window.innerWidth / 2
-            const y1 = Math.sin(angle1) * radius + window.innerHeight / 2
-            const x2 = Math.cos(angle2) * radius + window.innerWidth / 2
-            const y2 = Math.sin(angle2) * radius + window.innerHeight / 2
+            const x1 = Math.cos(angle1) * radius
+            const y1 = Math.sin(angle1) * radius
+            const x2 = Math.cos(angle2) * radius
+            const y2 = Math.sin(angle2) * radius
 
             return (
               <line
@@ -2275,7 +2280,6 @@ function ParallaxEffect48() {
             [0, 1],
             [(index / items.length) * 360, (index / items.length) * 360 + 360]
           )
-          const radius = 250
 
           return (
             <motion.div
@@ -2306,7 +2310,14 @@ function ParallaxEffect49() {
   })
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -800])
+  const floorValue = useTransform(scrollYProgress, (p) => Math.floor(p * 10) + 1)
   const floors = Array.from({ length: 10 })
+  const [currentFloor, setCurrentFloor] = useState(1)
+
+  useMotionValueEvent(floorValue, "change", (latest) => {
+    const clamped = Math.min(10, Math.max(1, Math.round(latest)))
+    setCurrentFloor((prev) => (prev === clamped ? prev : clamped))
+  })
 
   return (
     <div ref={containerRef} className="relative h-[200vh]">
@@ -2320,7 +2331,7 @@ function ParallaxEffect49() {
         {/* Elevator car */}
         <motion.div className="absolute w-64 h-80 bg-gradient-to-b from-gray-800 to-gray-900 border-4 border-orange-500 rounded-lg flex flex-col items-center justify-center" style={{ y }}>
           <div className="text-6xl font-bold text-white mb-4">
-            {useTransform(scrollYProgress, (p) => Math.floor(p * 10) + 1)}
+            {currentFloor}
           </div>
           <div className="text-xl text-gray-400">FLOOR</div>
         </motion.div>
