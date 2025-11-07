@@ -1,8 +1,19 @@
 "use client"
 
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials"
+import { useState, useRef } from "react"
+import { Play } from "lucide-react"
 
 export function HowItWorks() {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play()
+      setIsPlaying(true)
+    }
+  }
   const testimonials = [
     {
       name: "Step 1: Lab-Raised Perfection",
@@ -41,6 +52,41 @@ export function HowItWorks() {
           <h2 className="text-3xl md:text-4xl font-bold">How It Works</h2>
         </div>
         <AnimatedTestimonials testimonials={testimonials} autoplay={false} />
+        
+        {/* Video Section */}
+        <div className="mt-20 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white chango-regular whitespace-normal break-words px-4">
+            Don't have time to read? Watch our short video explaining the process!
+          </h3>
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-4xl">
+              <video
+                ref={videoRef}
+                className="w-full h-[500px] md:h-[600px] rounded-lg shadow-2xl object-cover"
+                src="/howitworks.mp4"
+                aria-label="How Bacon Wrapped Bitcoin Works"
+                autoPlay={false}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+              />
+              {!isPlaying && (
+                <button
+                  onClick={handlePlay}
+                  className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors rounded-lg"
+                  aria-label="Play video"
+                >
+                  <div className="bg-white/90 hover:bg-white rounded-full p-4 transition-colors">
+                    <Play className="h-12 w-12 text-black ml-1" fill="currentColor" />
+                  </div>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

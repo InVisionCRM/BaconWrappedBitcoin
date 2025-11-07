@@ -1,8 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, JetBrains_Mono, Bangers, Ubuntu, ABeeZee, Zilla_Slab_Highlight } from "next/font/google"
+import { Inter, JetBrains_Mono, Bangers, Ubuntu, ABeeZee, Zilla_Slab_Highlight, Swanky_and_Moo_Moo, Chango, Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
+import { SmoothCursor } from "@/components/ui/smooth-cursor"
+import { CoolMode } from "@/components/ui/cool-mode"
+import Image from "next/image"
 import "./globals.css"
 
 const inter = Inter({
@@ -47,6 +50,27 @@ const zillaSlabHighlight = Zilla_Slab_Highlight({
   display: "swap",
 })
 
+const swankyAndMooMoo = Swanky_and_Moo_Moo({
+  subsets: ["latin"],
+  variable: "--font-swanky-and-moo-moo",
+  weight: "400",
+  display: "swap",
+})
+
+const chango = Chango({
+  subsets: ["latin"],
+  variable: "--font-chango",
+  weight: "400",
+  display: "swap",
+})
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["400", "600", "700"],
+  display: "swap",
+})
+
 export const metadata: Metadata = {
   title: "Bacon Wrapped Bitcoin (BWBTC) - The Tastiest Memecoin on PulseChain",
   description:
@@ -67,7 +91,13 @@ export const metadata: Metadata = {
     title: "Bacon Wrapped Bitcoin (BWBTC)",
     description: "The tastiest memecoin on PulseChain! 🥓₿",
   },
-    generator: 'v0.app'
+  generator: 'v0.app',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  }
 }
 
 export default function RootLayout({
@@ -76,9 +106,30 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${baconFont.variable} ${ubuntu.variable} ${abeezee.variable} ${zillaSlabHighlight.variable}`}>
-      <body className="font-sans antialiased min-h-dvh overflow-x-hidden">
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${baconFont.variable} ${ubuntu.variable} ${abeezee.variable} ${zillaSlabHighlight.variable} ${swankyAndMooMoo.variable} ${chango.variable} ${poppins.variable}`}>
+      <body className="font-sans antialiased min-h-dvh w-full overflow-x-hidden bg-black">
+        <CoolMode
+          particle="/bacon-wrapped-bitcoin.jpg"
+          size={20}
+          particleCount={8}
+          speedHorz={3}
+          speedUp={4}
+        >
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        </CoolMode>
+        <SmoothCursor
+          cursor={
+            <Image
+              src="/bacon-wrapped-bitcoin.jpg"
+              alt="Bacon Wrapped Bitcoin cursor"
+              width={48}
+              height={48}
+              className="rounded-full object-cover"
+              priority
+              quality={85}
+            />
+          }
+        />
         <Analytics />
       </body>
     </html>

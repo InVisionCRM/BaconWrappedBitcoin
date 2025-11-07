@@ -112,13 +112,34 @@ export const AnimatedTestimonials = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-2xl font-bold text-black dark:text-white">
-              {testimonials[active].name}
-            </h3>
-            <p className="text-sm text-gray-500 dark:text-neutral-500">
-              {testimonials[active].designation}
-            </p>
-            <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
+            {/* Extract Step number and title */}
+            {(() => {
+              const fullName = testimonials[active].name;
+              const stepMatch = fullName.match(/^(Step \d+):\s*(.+)$/);
+              const stepNumber = stepMatch ? stepMatch[1] : "";
+              const title = stepMatch ? stepMatch[2] : fullName;
+              
+              return (
+                <>
+                  {stepNumber && (
+                    <div className="mb-2">
+                      <span className="text-lg font-semibold text-orange-500 dark:text-orange-400 uppercase tracking-wider">
+                        {stepNumber}
+                      </span>
+                    </div>
+                  )}
+                  <h3 className="text-2xl font-bold text-black dark:text-white mb-2">
+                    {title}
+                  </h3>
+                </>
+              );
+            })()}
+            {testimonials[active].designation && (
+              <p className="text-sm text-gray-500 dark:text-neutral-500">
+                {testimonials[active].designation}
+              </p>
+            )}
+            <motion.p className="mt-3 text-lg text-gray-500 dark:text-neutral-300">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -146,13 +167,17 @@ export const AnimatedTestimonials = ({
           </motion.div>
           <div className="flex gap-4 pt-12 md:pt-0">
             <button
+              type="button"
               onClick={handlePrev}
+              aria-label="Previous testimonial"
               className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             >
               <IconArrowLeft className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
             </button>
             <button
+              type="button"
               onClick={handleNext}
+              aria-label="Next testimonial"
               className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             >
               <IconArrowRight className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />

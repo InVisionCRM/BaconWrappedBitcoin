@@ -68,7 +68,19 @@ export const PixelImage = ({
       );
     };
 
-    return isValidGrid(customGrid) ? customGrid! : DEFAULT_GRIDS[grid];
+    // If customGrid is provided and valid, use it
+    if (isValidGrid(customGrid)) {
+      return customGrid!;
+    }
+
+    // Otherwise, use the predefined grid or fallback to default
+    const predefinedGrid = DEFAULT_GRIDS[grid];
+    if (predefinedGrid) {
+      return predefinedGrid;
+    }
+
+    // Fallback to a default grid if the key doesn't exist
+    return DEFAULT_GRIDS["6x4"];
   }, [customGrid, grid]);
 
   useEffect(() => {

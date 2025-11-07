@@ -1,17 +1,31 @@
 "use client"
 
-import React from "react"
-import { motion, useScroll, useTransform } from "motion/react"
+import React, { useState, useEffect, useRef } from "react"
+import { motion } from "motion/react"
 import Image from "next/image"
 import { TypewriterEffect } from "@/components/ui/typewriter-effect"
 
 export function PigFusionSection() {
-  const ref = React.useRef<HTMLDivElement | null>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
+  const ref = useRef<HTMLDivElement | null>(null)
+  const [scrollY, setScrollY] = useState(0)
 
-  const xRight = useTransform(scrollYProgress, [0, 1], ["100%", "0%"])
-  const xLeft = useTransform(scrollYProgress, [0, 1], ["-100%", "0%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [0, 0.5, 0.5])
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const getProgress = () => {
+    if (!ref.current) return 0
+    const rect = ref.current.getBoundingClientRect()
+    const windowHeight = window.innerHeight
+    const start = rect.top + scrollY - windowHeight
+    const end = rect.top + scrollY + rect.height
+    const progress = (scrollY - start) / (end - start)
+    return Math.max(0, Math.min(1, progress))
+  }
+
+  const progress = getProgress()
 
   return (
     <section id="pig-fusion" className="relative bg-black py-24 px-0">
@@ -44,32 +58,64 @@ export function PigFusionSection() {
             />
           </div>
         </div>
-        {/* Animated pig backgrounds (above video) */}
-        <div className="pointer-events-none absolute inset-0 z-20">
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[76vw] max-w-[850px] sm:w-[50vw] sm:max-w-[567px] overflow-hidden">
-            <motion.div style={{ x: xRight, opacity }}>
-              <Image src="/bitcoincoin.png" alt="Bitcoin coin" width={720} height={360} className="w-full h-auto object-contain" />
-            </motion.div>
-          </div>
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[76vw] max-w-[850px] sm:w-[50vw] sm:max-w-[567px] overflow-hidden">
-            <motion.div style={{ x: xLeft, opacity }}>
-              <Image src="/pigleft.png" alt="Pig left" width={720} height={360} className="w-full h-auto object-contain" />
-            </motion.div>
-          </div>
-        </div>
 
-        {/* Video */}
-        <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-center">
-          <div className="w-[220px] sm:w-[260px] md:w-[320px] overflow-hidden rounded-xl shadow-2xl">
-            <video
-              src="/btcfusiontubeloop.mp4"
-              className="h-auto w-full"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
+        {/* Animated Pigs and Video */}
+        <div className="relative flex items-center justify-center min-h-[400px]">
+          {/* Left Pig - slides in from left */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[200px] sm:w-[250px] overflow-hidden">
+            <motion.div
+              style={{
+                transform: `translateX(${(1 - progress) * -100}%)`,
+                opacity: progress,
+              }}
+            >
+              <Image 
+                src="/pigleft.png" 
+                alt="Pig left" 
+                width={300} 
+                height={300} 
+                className="w-full h-auto object-contain" 
+              />
+            </motion.div>
           </div>
+
+          {/* Right Pig - slides in from right */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[200px] sm:w-[250px] overflow-hidden">
+            <motion.div
+              style={{
+                transform: `translateX(${(1 - progress) * 100}%)`,
+                opacity: progress,
+              }}
+            >
+              <Image 
+                src="/pigright.png" 
+                alt="Pig right" 
+                width={300} 
+                height={300} 
+                className="w-full h-auto object-contain" 
+              />
+            </motion.div>
+          </div>
+
+          {/* Video - slides up from bottom */}
+          <motion.div
+            className="relative z-10"
+            style={{
+              transform: `translateY(${(1 - progress) * 100}%)`,
+              opacity: progress,
+            }}
+          >
+            <div className="w-[220px] sm:w-[260px] md:w-[320px] overflow-hidden rounded-xl shadow-2xl">
+              <video
+                src="/btcfusiontubeloop.mp4"
+                className="h-auto w-full"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

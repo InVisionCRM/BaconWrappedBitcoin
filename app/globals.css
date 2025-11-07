@@ -129,6 +129,8 @@
   }
 }
 
+/* Removed problematic zoom hack - using proper responsive design instead */
+
 /* Utility class for the "Bacon" wordmark font */
 .font-bacon {
   font-family: var(--font-bacon), var(--font-sans);
@@ -157,6 +159,29 @@
 .ubuntu-regular-italic { font-family: var(--font-ubuntu), var(--font-sans); font-weight: 400; font-style: italic; }
 .ubuntu-medium-italic { font-family: var(--font-ubuntu), var(--font-sans); font-weight: 500; font-style: italic; }
 .ubuntu-bold-italic { font-family: var(--font-ubuntu), var(--font-sans); font-weight: 700; font-style: italic; }
+
+/* Swanky and Moo Moo utilities */
+.swanky-and-moo-moo-regular { font-family: var(--font-swanky-and-moo-moo), var(--font-sans); font-weight: 400; font-style: normal; }
+
+/* Chango utilities */
+.chango-regular { font-family: var(--font-chango), var(--font-sans); font-weight: 400; font-style: normal; }
+
+/* Poppins utilities */
+.poppins-regular { font-family: var(--font-poppins), var(--font-sans); font-weight: 400; font-style: normal; }
+.poppins-semibold { font-family: var(--font-poppins), var(--font-sans); font-weight: 600; font-style: normal; }
+.poppins-bold { font-family: var(--font-poppins), var(--font-sans); font-weight: 700; font-style: normal; }
+
+/* Bitcount Prop Double Ink utilities - using pixelated font fallback */
+.bitcount-prop-double-ink {
+  font-family: "Courier New", "Monaco", "Menlo", monospace;
+  font-weight: 400;
+  font-style: normal;
+  color: white !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  image-rendering: pixelated;
+}
 
 /* Custom animations for the memecoin site */
 @keyframes float {
@@ -216,4 +241,10 @@
 
 .pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Grid utility - ensures grid items can shrink below content size */
+[class*="grid-cols"] > * {
+  min-width: 0;
+  min-height: 0;
 }

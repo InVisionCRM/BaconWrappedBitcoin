@@ -52,7 +52,7 @@ export function Community() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-4 gap-6 mb-12 min-w-0">
           {socialLinks.map((social, index) => (
             <Card
               key={index}

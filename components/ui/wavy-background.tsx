@@ -49,14 +49,28 @@ export const WavyBackground = ({
   const init = () => {
     canvas = canvasRef.current;
     ctx = canvas.getContext("2d");
-    w = ctx.canvas.width = window.innerWidth;
-    h = ctx.canvas.height = window.innerHeight;
+    
+    // Set device pixel ratio for crisp rendering
+    const devicePixelRatio = window.devicePixelRatio || 1;
+    w = ctx.canvas.width = window.innerWidth * devicePixelRatio;
+    h = ctx.canvas.height = window.innerHeight * devicePixelRatio;
+    
+    // Scale the context to match device pixel ratio
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    
+    // Apply blur with better quality
     ctx.filter = `blur(${blur}px)`;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    
     nt = 0;
     window.onresize = function () {
-      w = ctx.canvas.width = window.innerWidth;
-      h = ctx.canvas.height = window.innerHeight;
+      w = ctx.canvas.width = window.innerWidth * devicePixelRatio;
+      h = ctx.canvas.height = window.innerHeight * devicePixelRatio;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
       ctx.filter = `blur(${blur}px)`;
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
     };
     render();
   };
@@ -74,12 +88,19 @@ export const WavyBackground = ({
       ctx.beginPath();
       ctx.lineWidth = waveWidth || 50;
       ctx.strokeStyle = waveColors[i % waveColors.length];
-      for (x = 0; x < w; x += 5) {
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      
+      // Use smaller increments for smoother curves
+      for (x = 0; x < w; x += 2) {
         var y = noise(x / 800, 0.3 * i, nt) * 100;
-        ctx.lineTo(x, y + h * 0.5); // adjust for height, currently at 50% of the container
+        if (x === 0) {
+          ctx.moveTo(x, y + h * 0.5);
+        } else {
+          ctx.lineTo(x, y + h * 0.5);
+        }
       }
       ctx.stroke();
-      ctx.closePath();
     }
   };
 
@@ -121,6 +142,8 @@ export const WavyBackground = ({
         ref={canvasRef}
         id="canvas"
         style={{
+          width: "100%",
+          height: "100%",
           ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
         }}
       ></canvas>
