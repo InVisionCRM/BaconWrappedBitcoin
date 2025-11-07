@@ -94,7 +94,7 @@ const cards = [
     category: "Step 1",
     content: (
       <div className="max-w-none">
-        <p className="abeezee-regular text-black text-lg md:text-xl leading-relaxed">
+        <p className="abeezee-regular how-to-buy-card-text text-lg md:text-xl leading-relaxed">
           We recommend using the
           {" "}
           <LinkPreview url="https://internetmoney.io/" className="text-orange-600 font-semibold">Internet Money Wallet</LinkPreview>
@@ -110,7 +110,7 @@ const cards = [
       </div>
     ),
     imageClassName: "blur-[2px] sm:blur-[3px]",
-    overlayClassName: "bg-black/1",
+    overlayClassName: "bg-black/60",
   },
   {
     src: "/Apple-Cards/apple-card-2.png",
@@ -118,7 +118,7 @@ const cards = [
     category: "Step 2",
     content: (
       <div className="max-w-none">
-        <p className="abeezee-regular text-black text-base md:text-lg leading-relaxed">
+        <p className="abeezee-regular how-to-buy-card-text text-base md:text-lg leading-relaxed">
           You need PLS (PulseChain's native coin) for swaps and gas fees. Inside IMW, you can:
           <br /><br />
           Buy PLS directly through the wallet's fiat on-ramp, or
@@ -134,7 +134,7 @@ const cards = [
     category: "Step 3",
     content: (
       <div className="max-w-none">
-        <p className="abeezee-regular text-black text-base md:text-lg leading-relaxed">
+        <p className="abeezee-regular how-to-buy-card-text text-base md:text-lg leading-relaxed">
           Use IMW's in-app aggregator to swap PLS → Bacon Wrapped Bitcoin at the best available rate, or open the in-app browser to trade on a specific DEX like PulseX.
         </p>
       </div>
@@ -146,7 +146,7 @@ const cards = [
     category: "Step 4",
     content: (
       <div className="max-w-none">
-        <p className="abeezee-regular text-black text-base md:text-lg leading-relaxed">
+        <p className="abeezee-regular how-to-buy-card-text text-base md:text-lg leading-relaxed">
           Copy the official Bacon Wrapped Bitcoin contract address and proceed with your swap. Start small to test, then go bigger once confirmed. After it clears—sit back and smell the bacon! 🥓
         </p>
       </div>

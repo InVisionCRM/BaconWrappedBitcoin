@@ -248,3 +248,11 @@
   min-width: 0;
   min-height: 0;
 }
+
+.how-to-buy-card-preview .how-to-buy-card-text {
+  color: #ffffff;
+}
+
+.how-to-buy-card-modal .how-to-buy-card-text {
+  color: #0f0f0f;
+}

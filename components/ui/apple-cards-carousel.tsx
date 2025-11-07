@@ -279,11 +279,11 @@ export const Card = ({
               </motion.p>
               <motion.p
                 layoutId={layout ? `title-${card.title}` : undefined}
-                className="mt-4 text-3xl md:text-5xl font-semibold text-neutral-700 dark:text-white"
+                className="mt-4 text-3xl md:text-5xl font-bold text-black dark:text-white"
               >
                 {card.title}
               </motion.p>
-              <div className="py-10">{card.content}</div>
+              <div className="py-10 how-to-buy-card-modal">{card.content}</div>
             </motion.div>
           </div>
         )}
@@ -298,7 +298,7 @@ export const Card = ({
           <Image src={card.src} alt="" fill className="object-cover" />
         </div>
         
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-stone-100/70 via-transparent to-stone-100/70" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/80 via-black/30 to-black/80" />
         <div className={cn("pointer-events-none absolute inset-0 z-20", card.overlayClassName ?? "bg-black/50")} />
         <div className="relative z-40 p-6 md:p-8">
           <TextAnimate
@@ -315,13 +315,13 @@ export const Card = ({
             by="word"
             duration={0.6}
             delay={0.3}
-            className="mt-2 max-w-xs text-left abeezee-regular text-2xl md:text-3xl font-semibold [text-wrap:balance] text-black"
+            className="mt-2 max-w-xs text-left abeezee-regular text-2xl md:text-3xl font-bold [text-wrap:balance] text-black bg-white/80 px-3 py-1 rounded-2xl shadow-lg"
           >
             {card.title}
           </TextAnimate>
         </div>
         {/* Inline content preview with wavy animation */}
-        <div className="relative z-40 px-6 md:px-8 pb-6 md:pb-8 pt-2">
+        <div className="relative z-40 px-6 md:px-8 pb-6 md:pb-8 pt-2 how-to-buy-card-preview text-white">
           {typeof card.content === 'string' ? (
             <TextAnimate
               variants={{
